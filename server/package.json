@@ -11,5 +11,10 @@
     "url": "https://github.com/Xingzhouliu1987/FightThisTicket/server"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "nodemailer": "^4.4.1",
+    "pdfkit": "^0.8.3"
+  }
 }

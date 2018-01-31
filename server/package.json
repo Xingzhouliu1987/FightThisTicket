@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "nodemon": "^1.14.11",
-    "stream": "0.0.2"
+    "stream": "0.0.2",
+    "supertest": "^3.0.0"
   }
 }

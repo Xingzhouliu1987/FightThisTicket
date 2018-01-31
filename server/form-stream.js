@@ -1,6 +1,6 @@
 var fs = require('fs');
 /*
-	forms only read into memory once. implements PDFRStreamForFile
+	dummy "stream" object that wraps a buffer. Since form doesnt change 
 	fork of https://github.com/galkahana/HummusJS/blob/master/PDFRStreamForFile.js#L14
 */
 

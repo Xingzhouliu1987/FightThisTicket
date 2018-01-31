@@ -80,7 +80,7 @@ function writepdf(req,res) {
 
 
  		pageModifier.endContext().writePage();
-
+     if(req.files.evidence) {
           var newpage = pdfWriter.createPage(0,0,595,842);
         // pdfWriter.startPageContentContext(newpage).writeText('Hello ' + req.body.name,
         //                                                   0,400,
@@ -98,7 +98,7 @@ function writepdf(req,res) {
         // pause  page content placement so i can now put image data into the file
         // pdfWriter.pausePageContentContext(contentContext);
 
-		contentContext.drawImage(300,300,__dirname + req.files.evidence.name)
+	contentContext.drawImage(300,300,__dirname + req.files.evidence.name)
 
         // var imageXObject = pdfWriter.createImageXObjectFromJPG(bufferToStream(req.files.evidence.data));
         
@@ -108,7 +108,8 @@ function writepdf(req,res) {
         //                 .Q();
 
         pdfWriter.writePage(newpage);
-		pdfWriter.end();
+     }
+	pdfWriter.end();
 
         // pdfWriter.writePage(page);
         // pdfWriter.end();

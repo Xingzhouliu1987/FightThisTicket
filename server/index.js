@@ -119,7 +119,7 @@ function append_image_jpg(pdfWriter, file,cb) {
 			places image at 300pt left, 300pt above bottom
         */
 
-		contentContext.drawImage(300,300,__dirname+"/"+file.name)
+	contentContext.drawImage(300,300,__dirname+"/temp/"+file.name)
 
         pdfWriter.writePage(newpage);
 

@@ -1,6 +1,6 @@
 # Demonstrates 
-(1) Write text on PDF
-(2) Place uploaded evidence images onto a new page
+* Write text on PDF
+* Place uploaded evidence images onto a new page
 
 # To Do:
 * Sizing evidence images

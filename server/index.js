@@ -126,6 +126,8 @@ function append_image_jpg(pdfWriter, file,cb) {
 
         /*
 			places image at 300pt left, 300pt above bottom
+
+			**** MORE BLOCKING I-O ****
         */
 
 	    contentContext.drawImage(300,300,__dirname+"/temp/"+file.name)

@@ -34,12 +34,21 @@ function writepdf(req,res) {
 
 	    res.writeHead(200, {'Content-Type': 'application/pdf'});
  	
- 		/*
+ 	
+ 		/********
 			Reads the form into memory for processing.
 
 			note: io operations in hummus are **synchronous**
-			
-		*/
+
+				from hummus source : this.rs = fs.openSync(inPath,'r');
+
+
+			***  
+				need: think thru performance implications of blocking - implement hummus stream subclass that uses read async to break up read and manipulate 
+				into separate loop iterations if necessary
+			***
+						
+		**********/
  		var sourceStream = new hummus.PDFRStreamForFile(__dirname + '/forms/initial-rev.pdf');
 	    
 	    /*
@@ -103,7 +112,7 @@ function writepdf(req,res) {
 function append_image_jpg(pdfWriter, file,cb) {
 	/*
 		places uploaded image into a temporary directory
-		file.mv by default is asynchronous, so callback pattern is needed
+		file.mv is asynchronous, so callback pattern
 	*/
 	file.mv(__dirname + "/temp/" + file.name,function(err) {
 
@@ -119,7 +128,7 @@ function append_image_jpg(pdfWriter, file,cb) {
 			places image at 300pt left, 300pt above bottom
         */
 
-	contentContext.drawImage(300,300,__dirname+"/temp/"+file.name)
+	    contentContext.drawImage(300,300,__dirname+"/temp/"+file.name)
 
         pdfWriter.writePage(newpage);
 

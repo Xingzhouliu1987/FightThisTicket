@@ -1,23 +1,24 @@
 {
-  "name": "server",
+  "name": "fighttickeet",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Xingzhouliu1987/FightThisTicket/server"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "nodemailer": "^4.4.1",
-    "pdfkit": "^0.8.3"
+    "express-fileupload": "^0.4.0",
+    "hummus": "^1.0.83",
+    "multer": "^1.3.0",
+    "node-cmd": "^3.0.0"
   },
   "devDependencies": {
-    "pdf2json": "^1.1.7"
+    "nodemon": "^1.14.11",
+    "stream": "0.0.2"
   }
 }

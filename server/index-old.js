@@ -34,7 +34,7 @@ app.use(fileUpload());
 app.post('/submit-form', function(req, res) {
 // console.log(bufferToStream(req.files.evidence.data).read)
 
-    if(req.files) {
+    if(req.files.evidence) {
 		req.files.evidence.mv(__dirname + req.files.evidence.name,function(err) {
 			writepdf(req,res)
 		})

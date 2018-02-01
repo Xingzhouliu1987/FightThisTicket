@@ -1,59 +1,22 @@
-var fs = require('fs');
+"use strict"
+
+const fs = require('fs')
+const PDFRBufferStream = require("./buffer-stream")
 /*
-	forms only read into memory once. implements PDFRStreamForFile
+<<<<<<< HEAD
+    reads a file all at once into a buffer.
+=======
+	dummy "stream" object that wraps a buffer. Since form doesnt change 
 	fork of https://github.com/galkahana/HummusJS/blob/master/PDFRStreamForFile.js#L14
+>>>>>>> 669e9dd7b78b10b8c5cb224a77a1b22dba8e99da
 */
 
-function PDFRStreamRepeatableForFile(inPath)
+class FormStream extends PDFRBufferStream
 {
-
-    this.path = inPath;
-    this.rposition = 0;
-    this.fileSize = fs.statSync(inPath)["size"];
-
-    this.contents = fs.readFileSync(inPath);
-
-
+    constructor(inPath) {
+        //this.path = inPath
+        super(fs.readFileSync(inPath))
+    }
 } 
 
-PDFRStreamRepeatableForFile.prototype.read = function(inAmount)
-{
-
-    var arr = [];
-    var bytesRead = (this.fileSize - this.rposition) < inAmount ? (this.fileSize - this.rposition) : inAmount;
-
-    for(var i=this.rposition;i<(this.rposition+bytesRead);++i)
-        arr.push(this.contents[i]);
-    this.rposition+=bytesRead;
-    return arr;
-
-}
-
-
-PDFRStreamRepeatableForFile.prototype.setPosition = function(inPosition)
-{
-    this.rposition = inPosition;
-}
-
-PDFRStreamRepeatableForFile.prototype.setPositionFromEnd = function(inPosition)
-{
-    this.rposition = this.fileSize-inPosition;
-}
-
-PDFRStreamRepeatableForFile.prototype.skip = function(inAmount)
-{
-    this.rposition += inAmount;
-}
-
-PDFRStreamRepeatableForFile.prototype.getCurrentPosition = function()
-{
-    return this.rposition;
-}
-
-PDFRStreamRepeatableForFile.prototype.close = function(inCallback)
-{
-	inCallback()
-    //fs.close(this.rs,inCallback)
-};
-
-module.exports = PDFRStreamRepeatableForFile
+module.exports = FormStream

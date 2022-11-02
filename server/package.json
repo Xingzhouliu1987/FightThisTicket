@@ -13,7 +13,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "express-fileupload": "^0.4.0",
-    "hummus": "^1.0.83",
+    "hummus": "^1.0.111",
     "multer": "^1.3.0",
     "node-cmd": "^3.0.0"
   },
